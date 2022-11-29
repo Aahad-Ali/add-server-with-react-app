@@ -1,11 +1,12 @@
 import express from 'express';
 import path from 'path';
-
-// console.log('Aahad')
+import cors from 'cors';
 
 
 const app = express()
 const port = process.env.PORT || 5001;
+
+app.use(cors());
 
 app.get('/abc', (req, res) => {
 
@@ -26,6 +27,20 @@ app.get('/contact', (req, res) => {
   console.log('request :', req.ip)
 
   res.send('<h1>contact</h1>')
+}) 
+
+
+app.get('/weather', (req, res) => {
+
+  console.log('request :', req.ip)
+
+  res.send(
+    {temp:26,
+    min:23,
+    max:30,
+    humadity:72,
+  }
+  )
 }) 
 
 

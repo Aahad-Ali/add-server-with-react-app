@@ -15,7 +15,7 @@ function App() {
 
     console.log("I am click handler");
     axios
-      .get(`${baseUrl}/weather`)
+      .get(`${baseUrl}/weather${cityName}`)
       .then((response) => {
         console.log("response: ", response.data);
 

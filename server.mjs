@@ -30,9 +30,11 @@ app.get('/contact', (req, res) => {
 }) 
 
 
-app.get('/weather', (req, res) => {
+app.get('/weather:cityName', (req, res) => {
 
-  console.log('request :', req.ip)
+  console.log('request ip:', req.ip);
+  console.log('params:', req.params.cityName);
+
 
   res.send(
     {temp:26,

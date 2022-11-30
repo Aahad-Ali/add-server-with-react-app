@@ -37,7 +37,9 @@ app.get('/weather:cityName', (req, res) => {
 
 
   res.send(
-    {temp:26,
+    {
+    city: req.params.cityName,
+    temp:26,
     min:23,
     max:30,
     humadity:72,

@@ -45,6 +45,8 @@ function App() {
 
       {weatherData === null ? null : (
         <div>
+          City: {weatherData?.city}
+          <br />
           Temperature: {Math.round(weatherData?.temp)}°C
           <br />
           min: {Math.round(weatherData?.min)}°C

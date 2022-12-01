@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./App.css";
 
 let baseUrl = ``;
 if (window.location.href.split(":")[0] === "http") {
@@ -27,36 +28,41 @@ function App() {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        City Name:
-        <input
-          type="text"
-          placeholder="enter your city name"
-          required
-          onChange={(e) => {
-            setCityName(e.target.value);
-          }}
-        />
-        <button type="submit">get weather</button>
-      </form>
-      <br />
-      <br />
+    <>
+      <nav class="navbar navbar-expand-lg bg-dark">
+        <h1 className="header my-3">Weather App</h1>
+      </nav>
+      <div>
+        <form onSubmit={submitHandler} className="search my-5">
+          <input
+            className="getweather form-control"
+            type="text"
+            placeholder="Search weather"
+            required
+            onChange={(e) => {
+              setCityName(e.target.value);
+            }}
+          />
+          <button type="submit" className="btn btn-primary my-5">
+            get weather
+          </button>
+        </form>
 
-      {weatherData === null ? null : (
-        <div>
-          City: {weatherData?.city}
-          <br />
-          Temperature: {Math.round(weatherData?.temp)}°C
-          <br />
-          min: {Math.round(weatherData?.min)}°C
-          <br />
-          max: {Math.round(weatherData?.max)}°C
-          <br />
-          humadity: {Math.round(weatherData?.humadity)}°C
-        </div>
-      )}
-    </div>
+        {weatherData === null ? null : (
+          <div className="main my-5">
+            <h3><label htmlFor="">City:</label>        {weatherData?.city}</h3>
+            
+            <h3><label htmlFor="">Temperature:</label> {Math.round(weatherData?.temp)}°C</h3>
+           
+            <h3><label htmlFor="">Min</label>          {Math.round(weatherData?.min)}°C</h3>
+           
+            <h3><label htmlFor="">Max:</label>         {Math.round(weatherData?.max)}°C</h3>
+          
+            <h3><label htmlFor="">Humadity:</label>   {Math.round(weatherData?.humadity)}°C</h3> 
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
